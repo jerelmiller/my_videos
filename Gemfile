@@ -8,6 +8,8 @@ gem 'sass-rails'                                      # compile sass/scss to css
 gem 'uglifier'                                        # asset compression
 gem 'jquery-rails'                                    # jquery & ujs integration
 gem 'turbolinks'
+gem 'react-rails'
+gem 'showdown-rails'
 
 group :test do
   gem 'rspec-rails'
