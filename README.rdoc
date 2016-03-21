@@ -36,7 +36,7 @@ Things you may want to cover:
 
 ## Resources
   React on Rails tutorial: https://hackhands.com/react-rails-tutorial/
-
+  Ruby on Rails - Railscasts PRO #383 Uploading to Amazon S3 (pro): https://youtu.be/5MJ55_bu_jM
 
 
 
