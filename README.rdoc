@@ -1,0 +1,44 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+### Thought process
+## MVP
+  - React on Rails application
+    Why?
+    Options: React, Angular, Ember, rails tempates (haml, erb)
+
+  - Where videos are stored?
+    - Explore options
+    - local file - limited space or bandwith, security
+  To app server
+  - Streaming quality
+  -
+
+## Resources
+  React on Rails tutorial: https://hackhands.com/react-rails-tutorial/
+
+
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
