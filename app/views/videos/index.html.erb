@@ -3,6 +3,7 @@
   <%= video.name %>
   <%= video.description %>
   <%= video.path %>
+  <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true) %>
 <% end %>
 
 <%= form_for @video, url: videos_path(@video) do |f| %>
@@ -14,6 +15,8 @@
 
   <div><%= f.label :path %><br />
   <%= f.text_field :path %></div>
+
+  <div><%= f.file_field :file %></div>
 
   <%= f.submit "Create Profile", class: "btn btn-success" %>
 <% end %>

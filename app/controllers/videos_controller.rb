@@ -6,6 +6,7 @@ class VideosController <ApplicationController
 
   def create
     @video = Video.new(params_video)
+    @video.file = params[:file]
     if @video.save
       respond_to do |format|
         format.html { redirect_to :back }
@@ -18,6 +19,6 @@ class VideosController <ApplicationController
 
   private
   def params_video
-    params.require(:video).permit(:name, :description, :path)
+    params.require(:video).permit(:name, :description, :path, :file)
   end
 end
