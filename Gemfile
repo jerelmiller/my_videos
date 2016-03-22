@@ -18,7 +18,7 @@ group :test do
   gem 'faker'
   gem 'selenium-webdriver'
   gem 'capybara'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
   gem 'guard-rspec'
   gem 'database_cleaner'
 end
