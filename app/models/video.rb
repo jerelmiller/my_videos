@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
-  validates :name, uniqueness: true, presence: true
+  validates :name, presence: true
+  validates :file, presence: true
 
-end
+end  mount_uploader :file, FileUploader

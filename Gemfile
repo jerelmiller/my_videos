@@ -10,6 +10,7 @@ gem 'jquery-rails'                                    # jquery & ujs integration
 gem 'turbolinks'
 gem 'react-rails'
 gem 'showdown-rails'
+gem 'carrierwave'
 
 group :test do
   gem 'rspec-rails'
