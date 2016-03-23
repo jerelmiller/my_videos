@@ -6,7 +6,8 @@
   <% if video.valid? %>
     <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true) %>
   <% else %>
-    SOMETHING WENT WRONG!!
+    <%= image_tag("doh.jpg", :size => "320x200") %>
+    <p>Unable to load the video</p>
   <% end %>
 
   <%= link_to "Delete Video", video_path(video), :class => "btn btn-danger", data: {method: "delete", confirm: "Are you sure?"} %>
