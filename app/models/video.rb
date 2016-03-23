@@ -5,8 +5,6 @@ class Video < ActiveRecord::Base
   # validates :avatar, file_size: { less_than: 2.gigabytes }
   # https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Validate-attachment-file-size
 
-  attr_accessor :id
-
   before_destroy :remove_file
 
   mount_uploader :file, FileUploader
