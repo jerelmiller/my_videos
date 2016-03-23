@@ -9,6 +9,7 @@
     SOMETHING WENT WRONG!!
   <% end %>
 
+  <%= link_to "Delete Video", video_path(video), :class => "btn btn-danger", data: {method: "delete", confirm: "Are you sure?"} %>
 <% end %>
 
 <%= form_for @video, url: videos_path(@video) do |f| %>
