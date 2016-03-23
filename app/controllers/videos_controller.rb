@@ -7,13 +7,21 @@ class VideosController <ApplicationController
   def create
     @video = Video.new(params_video)
     @video.file = params[:file]
+
+    # Hacky! Unable to raise CarrierWave::IntegrityError
+    unless params[:video][:file].content_type.match(/mp4/)
+      flash[:notice] = "wrong file type"
+    end
+
     if @video.save
+      flash[:notice] = "Your video has been saved"
       respond_to do |format|
         format.html { redirect_to :back }
         format.js
       end
     else
-      #do something
+      flash[:error] = @video.errors.full_messages.join(", ")
+      redirect_to :back
     end
   end
 
