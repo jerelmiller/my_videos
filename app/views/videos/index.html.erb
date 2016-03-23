@@ -2,7 +2,6 @@
 <% @videos.each do |video| %>
   <%= video.name %>
   <%= video.description %>
-  <%= video.path %>
   <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true) %>
 <% end %>
 
@@ -12,9 +11,6 @@
 
   <div><%= f.label :description %><br />
   <%= f.text_field :description %></div>
-
-  <div><%= f.label :path %><br />
-  <%= f.text_field :path %></div>
 
   <div><%= f.file_field :file %></div>
 
