@@ -15,6 +15,7 @@ RSpec.describe Video, type: :model do
       end
 
       after do
+        FileUploader.enable_processing = false
         Video.destroy_all
       end
 
@@ -28,10 +29,8 @@ RSpec.describe Video, type: :model do
         end
 
         video.file = uploader
-        video.save
-        uploader.remove!
 
-        expect(Video.count).to eq 1
+        expect{ video.save }.to change{ Video.count }.by 1
       end
     end
 
