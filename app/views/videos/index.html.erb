@@ -2,7 +2,13 @@
 <% @videos.each do |video| %>
   <%= video.name %>
   <%= video.description %>
-  <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true) %>
+
+  <% if video.valid? %>
+    <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true) %>
+  <% else %>
+    SOMETHING WENT WRONG!!
+  <% end %>
+
 <% end %>
 
 <%= form_for @video, url: videos_path(@video) do |f| %>
