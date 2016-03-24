@@ -1,44 +1,33 @@
-== README
+# My Videos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+My Videos is a web application that allows user to upload only MP4 videos and play those videos from the browser.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone this repository
 
-* System dependencies
+```
+$ git clone git@github.com:annejhetson/my_videos.git
+$ cd my_videos
+```
 
-* Configuration
+Then run bundle to install all the gems
 
-* Database creation
+`$ bundle`
+`$ gem install bundler` if you don't have bundler installed
 
-* Database initialization
+Database creation
 
-* How to run the test suite
+`$ rake db:create db:migrate db:test:prepare`
 
-* Services (job queues, cache servers, search engines, etc.)
+Run rails server
 
-* Deployment instructions
+`$ rails s`
 
-### Thought process
-## MVP
-  - React on Rails application
-    Why?
-    Options: React, Angular, Ember, rails tempates (haml, erb)
+Open your browser and visit
 
-  - Where videos are stored?
-    - Explore options
-    - local file - limited space or bandwith, security
-  To app server
-  - Streaming quality
-  -
+http://localhost:3000/
 
-## Resources
-  React on Rails tutorial: https://hackhands.com/react-rails-tutorial/
-  Ruby on Rails - Railscasts PRO #383 Uploading to Amazon S3 (pro): https://youtu.be/5MJ55_bu_jM
+## Test suite
 
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+`$ bundle exec rspec`
