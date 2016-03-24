@@ -9,7 +9,6 @@ gem 'bootstrap-sass'
 gem 'uglifier'                                        # asset compression
 gem 'jquery-rails'                                    # jquery & ujs integration
 gem 'turbolinks'
-gem 'react-rails'
 gem 'showdown-rails'
 gem 'carrierwave'
 
