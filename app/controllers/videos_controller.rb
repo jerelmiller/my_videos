@@ -9,7 +9,7 @@ class VideosController <ApplicationController
     @video.file = params[:file]
 
     # Hacky! Unable to raise CarrierWave::IntegrityError
-    unless params[:video][:file].content_type.match(/mp4/)
+    if params[:video][:file].present? && !params[:video][:file].content_type.match(/mp4/)
       flash[:notice] = "wrong file type"
     end
 

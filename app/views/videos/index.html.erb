@@ -4,10 +4,10 @@
   <%= video.description %>
 
   <% if video.valid? %>
-    <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true) %>
+    <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true, class: video) %>
   <% else %>
     <%= image_tag("doh.jpg", :size => "320x200") %>
-    <p>Unable to load the video</p>
+    Unable to load the video
   <% end %>
 
   <%= link_to "Delete Video", video_path(video), :class => "btn btn-danger", data: {method: "delete", confirm: "Are you sure?"} %>
@@ -20,7 +20,7 @@
   <div><%= f.label :description %><br />
   <%= f.text_field :description %></div>
 
-  <div><%= f.file_field :file %></div>
+  <div><%= f.file_field :file, id: "post_file" %></div>
 
   <%= f.submit "Save My Video", class: "btn btn-success" %>
 <% end %>
