@@ -7,10 +7,8 @@ feature "Upload video" do
   end
 
   scenario "Successfully upload a video" do
-    visit '/'
-    fill_in 'Name', with: 'my video'
-    fill_in 'Description', with: 'my description'
-    page.attach_file('post_file', Rails.root + 'spec/test_video.mp4', visible: false)
+    fill_in_informarion
+    select_video
     click_button 'Save My Video'
     page.find('video')['src'].should have_content 'test_video.mp4'
     expect(page).to have_content 'Your video has been saved'
@@ -18,18 +16,26 @@ feature "Upload video" do
 
   scenario "Unsuccessfully upload without a video" do
     visit '/'
-    fill_in 'Name', with: 'my video'
-    fill_in 'Description', with: 'my description'
+    fill_in_informarion
     click_button 'Save My Video'
     expect(page).to have_content 'File can\'t be blank'
   end
 
   scenario "Unsuccessfully upload with a wrong file type" do
     visit '/'
-    fill_in 'Name', with: 'my video'
-    fill_in 'Description', with: 'my description'
-    page.attach_file('post_file', Rails.root + 'spec/Godzilla_Atomic_Breath.gif', visible: false)
+    fill_in_informarion
+    select_non_video
     click_button 'Save My Video'
     expect(page).to have_content 'wrong file type'
+  end
+
+  scenario "Successfully delete video" do
+    visit '/'
+    fill_in_informarion
+    select_video
+    click_button 'Save My Video'
+    page.find('video')['src'].should have_content 'test_video.mp4'
+    page.find('#delete').click
+    expect(page).to have_no_content('test_video.mp4')
   end
 end
