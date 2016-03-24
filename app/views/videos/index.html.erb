@@ -1,26 +1,46 @@
-<h1>My Videos</h1>
-<% @videos.each do |video| %>
-  <%= video.name %>
-  <%= video.description %>
+<div class="header">
+  <h1 class='pull-left'>My Videos</h1>
+  <p class="pull-right">Where I share my videos...</p>
+</div>
 
-  <% if video.valid? %>
-    <%= video_tag(video.file.url, :size => "320x240", :controls => true, :autobuffer => true, class: video) %>
-  <% else %>
-    <%= image_tag("doh.jpg", :size => "320x200") %>
-    Unable to load the video
-  <% end %>
+<div class='container'>
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class='video-card pull-left'>
+        <p class='video-name text-center'><%= video.name %></p>
 
-  <%= link_to "Delete Video", video_path(video), :class => "btn btn-danger", data: {method: "delete", confirm: "Are you sure?"} %>
-<% end %>
+        <% if video.valid? %>
+          <%= video_tag(video.file.url, :size => '320x180', :controls => true,
+              :autobuffer => true, :class => 'video')
+          %>
+        <% else %>
+          <%= image_tag('doh.jpg', :size => '320x165', :class => 'video') %>
+          <p class='text-center'>Unable to load the video</p>
+        <% end %>
 
-<%= form_for @video, url: videos_path(@video) do |f| %>
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name %></div>
+        <p class="video-description"><%= video.description %></p>
+        <%= link_to 'Delete Video', video_path(video), :class => 'btn btn-danger',
+            data: {method: 'delete', confirm: 'Are you sure?'}
+        %>
 
-  <div><%= f.label :description %><br />
-  <%= f.text_field :description %></div>
+      </div>
+    <% end %>
+  </div>
 
-  <div><%= f.file_field :file, id: "post_file" %></div>
+  <div class="upload-form">
+    <h4>Upload a new video</h4>
+    <%= form_for @video, url: videos_path(@video) do |f| %>
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name %></div>
 
-  <%= f.submit "Save My Video", class: "btn btn-success" %>
-<% end %>
+      <div><%= f.label :description %><br />
+      <%= f.text_field :description %></div>
+
+      <div><%= f.label :video %><br />
+      <div class='choose-file'><%= f.file_field :file, id: 'post_file' %></div>
+
+      <%= f.submit 'Save My Video', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+

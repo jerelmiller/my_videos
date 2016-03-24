@@ -1,0 +1,59 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+*/
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "card.css.scss";
+
+// Color Variables
+$white:  #ffffff;
+$orange: #ff6600;
+$gray: #cccccc;
+
+// Page layout
+.header {
+  background-color: $gray;
+  height: 70px;
+  margin-bottom: 30px;
+  padding-top: 15px;
+  padding-left: 30px;
+  width: 100%;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  p {
+    font-style: italic;
+    padding-right: 40px;
+    padding-top: 15px;
+  }
+}
+
+// General Elements
+.btn-danger {
+  float: right;
+  margin-right: 10px;
+}
+
+// Upload form
+
+.upload-form {
+  height: 400px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+  width: 350px;
+
+  .btn {
+    margin-top: 20px;
+  }
+
+  .choose-file {
+    margin-left: 90px;
+  }
+}

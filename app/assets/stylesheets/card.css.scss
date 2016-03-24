@@ -1,0 +1,25 @@
+.video-card {
+  background-color: #ff6600;
+  border-radius: 10px;
+  height: 400px;
+  margin: 10px;
+  width: 350px;
+}
+
+.video-name, .video-description {
+  background-color: white;
+  padding: 2px;
+  margin: 15px 1px;
+}
+
+.video-name {
+  font-weight: 600;
+}
+
+.video-description {
+  height: 72px;
+}
+
+.video {
+  margin: 5px 15px;
+}

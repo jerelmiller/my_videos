@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 gem 'pg'                                              # postgres support
 gem 'sass-rails'                                      # compile sass/scss to css
+gem 'bootstrap-sass'
 gem 'uglifier'                                        # asset compression
 gem 'jquery-rails'                                    # jquery & ujs integration
 gem 'turbolinks'
