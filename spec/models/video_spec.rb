@@ -20,21 +20,13 @@ RSpec.describe Video, type: :model do
       end
 
       it 'saves video successfully with mp4 file' do
-        video = Video.new(name: 'my video')
-        uploader = FileUploader.new(video, :file)
-
-        path_to_file = 'spec/test_video.mp4'
-        File.open(path_to_file) do |f|
-          uploader.store!(f)
-        end
-
-        video.file = uploader
+        video = FactoryGirl.build(:video)
 
         expect{ video.save }.to change{ Video.count }.by 1
       end
 
       it 'doesn\'t alows non-mp4 file' do
-        video = Video.new(name: 'my godzilla pet')
+        video = FactoryGirl.build(:video, name: 'my godzilla pet', file: nil)
         uploader = FileUploader.new(video, :file)
 
         path_to_file = 'spec/Godzilla_Atomic_Breath.gif'
@@ -48,23 +40,14 @@ RSpec.describe Video, type: :model do
       end
 
       it 'becomes invalid when file is missing' do
-        video = Video.new(name: 'my video')
-          uploader = FileUploader.new(video, :file)
+        video = FactoryGirl.create(:video)
 
-          path_to_file = 'spec/test_video.mp4'
-          File.open(path_to_file) do |f|
-            uploader.store!(f)
-          end
+        ## Remove video
+        FileUtils.rm_rf(
+          "#{Rails.root}/public/uploads/video/#{video.file.mounted_as}/#{video.id}"
+        )
 
-          video.file = uploader
-          video.save
-
-          ## Remove video
-          FileUtils.rm_rf(
-            "#{Rails.root}/public/uploads/video/#{video.file.mounted_as}/#{video.id}"
-          )
-
-          expect(video.valid?).to be false
+        expect(video.valid?).to be false
       end
     end
   end
