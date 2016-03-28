@@ -3,6 +3,8 @@ require 'spec_helper'
 require 'carrierwave/test/matchers'
 
 RSpec.describe Video, type: :model do
+
+  #TODO Mock uploader service
   describe 'validations' do
     it { should validate_presence_of :name }
     it { should validate_presence_of :file }
@@ -16,6 +18,7 @@ RSpec.describe Video, type: :model do
 
       after do
         FileUploader.enable_processing = false
+        # TODO: this doesn't remove S3 file for some reason
         Video.destroy_all
       end
 
@@ -23,6 +26,9 @@ RSpec.describe Video, type: :model do
         video = FactoryGirl.build(:video)
 
         expect{ video.save }.to change{ Video.count }.by 1
+
+        # TODO: find out why Video.destroy all doesn't work
+        video.file.remove!
       end
 
       it 'doesn\'t alows non-mp4 file' do
@@ -31,7 +37,7 @@ RSpec.describe Video, type: :model do
 
         path_to_file = 'spec/Godzilla_Atomic_Breath.gif'
         File.open(path_to_file) do |f|
-          expect{ uploader.store!(f) }.to raise_error
+          expect{ uploader.store!(f) }.to raise_error(CarrierWave::IntegrityError)
         end
         video.file = uploader
         video.save
@@ -42,12 +48,10 @@ RSpec.describe Video, type: :model do
       it 'becomes invalid when file is missing' do
         video = FactoryGirl.create(:video)
 
-        ## Remove video
-        FileUtils.rm_rf(
-          "#{Rails.root}/public/uploads/video/#{video.file.mounted_as}/#{video.id}"
-        )
+        ## Remove video from S3
+        video.file.remove!
 
-        expect(video.valid?).to be false
+        expect{ open(video.file.url) }.to raise_error(OpenURI::HTTPError)
       end
     end
   end
