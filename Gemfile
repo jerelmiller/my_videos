@@ -11,6 +11,7 @@ gem 'jquery-rails'                                    # jquery & ujs integration
 gem 'turbolinks'
 gem 'showdown-rails'
 gem 'carrierwave'
+gem 'fog', require: 'fog/aws'
 
 group :test do
   gem 'rspec-rails'

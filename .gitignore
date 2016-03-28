@@ -17,3 +17,5 @@
 /video
 
 .byebug_history
+
+config/application.yml
