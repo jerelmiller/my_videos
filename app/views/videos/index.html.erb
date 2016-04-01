@@ -6,8 +6,9 @@
 <div class='container'>
   <div class="row">
     <% flash.each do |key, msg| %>
-      <div class="alert alert-<%= key %>">
+      <div class="alert alert-<%= key %>" role="alert">
         <%= msg %>
+      </div>
     <% end %>
     <% @videos.each do |video| %>
       <div class='video-card pull-left'>
