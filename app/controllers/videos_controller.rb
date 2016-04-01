@@ -24,6 +24,8 @@ class VideosController <ApplicationController
       flash[:error] = @video.errors.full_messages.join(", ")
       redirect_to :back
     end
+
+    VideoMailer.upload(@video.file, 'user@user.com')
   end
 
   def destroy
