@@ -1,5 +1,6 @@
 class VideosController <ApplicationController
   def index
+    flash[:success] = 'hello'
     @videos = Video.all
     @video = Video.new
   end
