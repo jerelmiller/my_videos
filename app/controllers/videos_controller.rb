@@ -1,4 +1,4 @@
-class VideosController <ApplicationController
+class VideosController < ApplicationController
   def index
     flash[:success] = 'hello'
     @videos = Video.all
